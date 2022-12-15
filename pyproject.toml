@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "userbots-telegram"
+version = "0.1.0"
+description = ""
+authors = ["osp54 <clashmekers54@gmail.com>"]
+readme = "README.md"
+packages = [{include = "userbots_telegram"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyrogram = "^2.0.69"
+tgcrypto = "^1.2.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
