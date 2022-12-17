@@ -1,11 +1,9 @@
 import json
 import os
 import sys
-import importlib.util
 
-from api.Modules import Modules
-from pyrogram import Client, filters
-from pyrogram.types import Message
+from api.modloader import Loader
+from pyrogram import Client
 
 config_path = os.path.join(sys.path[0], "config.json")
 
@@ -27,17 +25,10 @@ else:
 
 app = Client("osp54", api_id, api_hash)
 
-
-@app.on_message(filters.command("ping", "!"))
-async def ping(client, message: Message):
-    await message.edit("Pong!")
-
-
 if __name__ == '__main__':
-    mods = Modules()
+    mods = Loader(app)
     mods.load_modules()
-
-    for mod in mods.modules:
-        for cmd in mod.commands:
-
+    mods.register_commands()
+    mods.register_events()
+    mods.send_ready()
     app.run()

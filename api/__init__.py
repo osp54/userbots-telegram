@@ -1,1 +1,1 @@
-from .Modules import Modules, Module
+from .modloader import Loader, Module
