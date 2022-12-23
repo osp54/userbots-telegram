@@ -75,8 +75,8 @@ class Loader:
 
     def register_events(self):
         for event in self.events:
-            handler = self.client.add_handler(event["event"](partial(event["event"]["function"], event["module"]),
-                                              event["event"]["filter"]))
+            handler = self.client.add_handler(
+                event["event"]["event"](partial(event["event"]["function"], event["module"]), event["event"]["filter"]))
             self.handlers.append({
                 "handler": handler,
                 "module": event["module"],
